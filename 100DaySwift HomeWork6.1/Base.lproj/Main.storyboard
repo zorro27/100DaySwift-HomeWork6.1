@@ -42,6 +42,12 @@
                     <navigationItem key="navigationItem" id="CcU-tr-VcQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVc-yS-bvW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sxa-0B-4Om">
+                    <rect key="frame" x="0.0" y="0.0" width="67" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                </button>
             </objects>
             <point key="canvasLocation" x="1213.0434782608697" y="72.991071428571431"/>
         </scene>

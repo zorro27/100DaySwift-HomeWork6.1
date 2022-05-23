@@ -13,8 +13,16 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(clearList))
+        settingNavBar()
+    }
+    
+    func settingNavBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(clearList))
+        toolbarItems = [spacer, refresh]
+        navigationController?.isToolbarHidden = false
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +44,6 @@ class ViewController: UITableViewController {
             }
         }
 
-    
     @objc func add() {
         let AC = UIAlertController(title: "Новая запись", message: "Введите продукт...", preferredStyle: .alert)
         AC.addTextField()
@@ -54,6 +61,13 @@ class ViewController: UITableViewController {
             let lowerAnswer = answer.capitalized
             array.insert(lowerAnswer, at: 0)
         }
+    
+    @objc func share() {
+        let list = array.joined(separator: ", ")
+        let vc = UIActivityViewController(activityItems: [list], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+    }
     
     @objc func clearList() {
         array.removeAll()

@@ -23,6 +23,8 @@ class ViewController: UITableViewController {
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(clearList))
         toolbarItems = [spacer, refresh]
         navigationController?.isToolbarHidden = false
+        navigationItem.title = "Shop list"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

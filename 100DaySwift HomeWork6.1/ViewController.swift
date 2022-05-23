@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UITableViewController {
     
     var array: [String] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingNavBar()
@@ -28,7 +28,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         array.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = array[indexPath.row]
@@ -36,14 +36,14 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-            if editingStyle == .delete {
-                array.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            } else if editingStyle == .insert {
-            }
+        
+        if editingStyle == .delete {
+            array.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
         }
-
+    }
+    
     @objc func add() {
         let AC = UIAlertController(title: "Новая запись", message: "Введите продукт...", preferredStyle: .alert)
         AC.addTextField()
@@ -56,11 +56,11 @@ class ViewController: UITableViewController {
         
         AC.addAction(addProduct)
         present(AC, animated: true)
-            }
-        func submit (_ answer: String) {
-            let lowerAnswer = answer.capitalized
-            array.insert(lowerAnswer, at: 0)
-        }
+    }
+    func submit (_ answer: String) {
+        let lowerAnswer = answer.capitalized
+        array.insert(lowerAnswer, at: 0)
+    }
     
     @objc func share() {
         let list = array.joined(separator: ", ")
